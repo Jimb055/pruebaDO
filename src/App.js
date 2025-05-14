@@ -38,6 +38,10 @@ export default function App() {
           text="DigitalOcean Dashboard"
           url="https://cloud.digitalocean.com/apps"
         />
+            <Button
+          text="Nicole Docs"
+          url="https://www.digitalocean.com/docs/app-platform"
+        />
       </div>
     </div>
   );
