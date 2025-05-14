@@ -40,7 +40,7 @@ export default function App() {
         />
             <Button
           text="Nicole Docs"
-          url="https://www.digitalocean.com/docs/app-platform"
+          url="https://www.youtube.com"
         />
       </div>
     </div>
