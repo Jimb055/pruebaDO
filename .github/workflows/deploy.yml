@@ -1,0 +1,33 @@
+name: Deploy to DigitalOcean App Platform
+
+on:
+  push:
+    branches:
+      - main  # Puede cambiarse al branch deseado
+
+jobs:
+  deploy:
+    name: Deploy App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install doctl
+        run: |
+          sudo snap install doctl --classic
+
+      - name: Authenticate with DigitalOcean
+        env:
+          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DOAPITOKEN1 }}
+        run: |
+          doctl auth init --access-token "$DIGITALOCEAN_ACCESS_TOKEN"
+
+      - name: Trigger redeploy on App Platform
+        env:
+          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DOAPITOKEN1 }}
+        run: |
+          # Si se conoce el ID de la App, se recomienda colocarlo manualmente
+          APP_ID=997af658-082b-4581-9e37-e33cf9a9e744
+          doctl apps redeploy $APP_ID
